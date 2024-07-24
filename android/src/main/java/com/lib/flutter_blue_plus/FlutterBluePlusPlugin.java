@@ -2179,8 +2179,8 @@ public class FlutterBluePlusPlugin implements
             ServicePair pair = getServicePair(gatt, characteristic);
 
             // GATT Service?
-            if (uuidStr(pair.primary) == "1800") {
-
+            if (uuidStr(pair.primary) == "1812") {
+            log(LogLevel.DEBUG,"CHANGE TO 1812 SERVICE");
                 // services changed
                 if (uuidStr(characteristic.getUuid()) == "2A05") {
                     HashMap<String, Object> response = bmBluetoothDevice(gatt.getDevice());
