@@ -633,7 +633,7 @@ public class FlutterBluePlusPlugin implements
                         }
 
                         // this includes devices connected by other apps
-                        List<BluetoothDevice> devices = mBluetoothManager.getConnectedDevices(BluetoothProfile.GATT);
+                        List<BluetoothDevice> devices = mBluetoothManager.getConnectedDevices(BluetoothProfile.HID_DEVICE);
 
                         List<HashMap<String, Object>> devList = new ArrayList<HashMap<String, Object>>();
                         for (BluetoothDevice d : devices) {
@@ -2179,8 +2179,8 @@ public class FlutterBluePlusPlugin implements
             ServicePair pair = getServicePair(gatt, characteristic);
 
             // GATT Service?
-            if (uuidStr(pair.primary) == "1812") {
-            log(LogLevel.DEBUG,"CHANGE TO 1812 SERVICE");
+            if (uuidStr(pair.primary) == "1800") {
+
                 // services changed
                 if (uuidStr(characteristic.getUuid()) == "2A05") {
                     HashMap<String, Object> response = bmBluetoothDevice(gatt.getDevice());
