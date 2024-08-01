@@ -634,10 +634,13 @@ public class FlutterBluePlusPlugin implements
 
                         // this includes devices connected by other apps
                         // List<BluetoothDevice> devices = mBluetoothManager.getConnectedDevices(BluetoothProfile.HID_DEVICE);
-                        val bluetoothAdapter: BluetoothAdapter? = BluetoothAdapter.getDefaultAdapter()
-                        val devices = mutableListOf<BluetoothDevice>()
-                        bluetoothAdapter?.bondedDevices?.forEach { device ->
-                                devices.add(device)
+                        BluetoothAdapter bluetoothAdapter = BluetoothAdapter.getDefaultAdapter();
+                        List<BluetoothDevice> pairedDevices = new ArrayList<>();
+                        if (bluetoothAdapter != null) {
+                            Set<BluetoothDevice> bondedDevices = bluetoothAdapter.getBondedDevices();
+                            for (BluetoothDevice device : bondedDevices) {
+                                pairedDevices.add(device);
+                            }
                         }
 
                         List<HashMap<String, Object>> devList = new ArrayList<HashMap<String, Object>>();
